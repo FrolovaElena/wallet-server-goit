@@ -1,0 +1,82 @@
+[
+  {
+    "id": 19112831,
+    "name": "Пицца Пепперони с томатами",
+    "description": "",
+    "price": "100",
+    "currency": "UAN",
+    "created": "21-07-2019",
+    "modified": "23-07-2019",
+    "categories": ["food"]
+  },
+  {
+    "id": 19112832,
+    "name": "Суши",
+    "description": "",
+    "price": "80",
+    "currency": "UAN",
+    "created": "20-07-2019",
+    "modified": "22-07-2019",
+    "categories": ["food"]
+  },
+  {
+    "id": 19112833,
+    "name": "Мастер и Маргарита",
+    "description": "",
+    "price": "380",
+    "currency": "UAN",
+    "created": "10-05-2019",
+    "modified": "02-07-2019",
+    "categories": ["book"]
+  },
+  {
+    "id": 19112834,
+    "name": "Рубашка",
+    "description": "",
+    "price": "250",
+    "currency": "UAN",
+    "created": "26-05-2019",
+    "modified": "21-07-2019",
+    "categories": ["clothes"]
+  },
+  {
+    "id": 19112835,
+    "name": "Чизкейк",
+    "description": "",
+    "price": "50",
+    "currency": "UAN",
+    "created": "05-06-2019",
+    "modified": "18-07-2019",
+    "categories": ["food"]
+  },
+  {
+    "id": 19112836,
+    "name": "Джинсы",
+    "description": "",
+    "price": "540",
+    "currency": "UAN",
+    "created": "22-07-2019",
+    "modified": "28-07-2019",
+    "categories": ["clothes"]
+  },
+  {
+    "id": 19112837,
+    "name": "Великий Гетсби",
+    "description": "",
+    "price": "270",
+    "currency": "UAN",
+    "created": "21-05-2019",
+    "modified": "23-06-2019",
+    "categories": ["book"]
+  },
+  {
+    "id": 19112838,
+    "name": "Портрет Дориана Грея",
+    "description": "",
+    "price": "350",
+    "currency": "UAN",
+    "created": "14-06-2019",
+    "modified": "03-07-2019",
+    "categories": ["book"]
+  }
+]
