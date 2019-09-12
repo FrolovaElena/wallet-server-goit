@@ -1,34 +1,26 @@
 const express = require("express");
 const app = express();
-const costs = require("./src/bd/all-costs.json");
+const { port, url } = require("./config");
+const connectToDB = require("./src/db/connectToDB");
+const costControllers = require("./src/controllers/costsControllers");
 
-app.get("/", (req, res, next) => {
-  res.status(200).send("Wellcome to our App");
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/costs", (req, res, next) => {
-  const category = req.query.category;
-  const allCurrentCategories = costs.map(cost => {
-    const [category] = cost.categories;
-    return category;
-  });
-  const filteredCosts = costs.filter(cost => {
-    const [categories] = cost.categories;
-    return categories === category;
-  });
+app.get("/", costControllers.mainRoute);
 
-  if (!category) res.status(200).send({ status: "success", products: costs });
+app.get("/costs", costControllers.getAll);
 
-  allCurrentCategories.includes(category)
-    ? res.status(200).json({ status: "success", products: filteredCosts })
-    : res.status(404).send({ status: "no products", products: [] });
-});
+app.get("/costs/:id", costControllers.getOne);
 
-app.get("/costs/:id", (req, res, next) => {
-  const findedCost = costs.find(cost => cost.id === Number(req.params.id));
-  res.status(200).json({ status: "success", products: findedCost });
-});
+app.post("/costs", costControllers.create);
 
-app.listen(3001, () => {
+app.patch("/costs/:id", costControllers.update);
+
+app.delete("/costs/:id", costControllers.delete);
+
+app.listen(port, () => {
   console.log("server is running!");
 });
+
+connectToDB(url);
