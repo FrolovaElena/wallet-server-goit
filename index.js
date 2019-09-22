@@ -2,22 +2,40 @@ const express = require("express");
 const app = express();
 const { port, url } = require("./config");
 const connectToDB = require("./src/db/connectToDB");
-const costControllers = require("./src/controllers/costsControllers");
+const userControllers = require("./src/controllers/userControllers");
+const productControllers = require("./src/controllers/productControllers");
+const orderControllers = require("./src/controllers/orderControllers");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", costControllers.mainRoute);
+app.get("/", userControllers.mainRoute);
 
-app.get("/costs", costControllers.getAll);
+app.get("/users", userControllers.getAll);
 
-app.get("/costs/:id", costControllers.getOne);
+app.get("/users/:id", userControllers.getOne);
 
-app.post("/costs", costControllers.create);
+app.post("/users", userControllers.create);
 
-app.patch("/costs/:id", costControllers.update);
+app.put("/users/:id", userControllers.update);
 
-app.delete("/costs/:id", costControllers.delete);
+app.delete("/users/:id", userControllers.delete);
+
+app.get("/products", productControllers.getAll);
+
+app.get("/products/:id", productControllers.getOne);
+
+app.post("/products", productControllers.create);
+
+app.put("/products/:id", productControllers.update);
+
+app.get("/orders", orderControllers.getAll);
+
+app.get("/orders/:id", orderControllers.getOne);
+
+app.post("/orders", orderControllers.post);
+
+app.put("/orders/:id", orderControllers.update);
 
 app.listen(port, () => {
   console.log("server is running!");
