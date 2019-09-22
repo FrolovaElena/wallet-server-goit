@@ -6,7 +6,7 @@ const connectToDB = dbUrl => {
     .then(() => {
       console.log("Database connection succesfull");
     })
-    .catch(err => {
+    .catch(() => {
       console.log("Database connection error");
     });
 };
