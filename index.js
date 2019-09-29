@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 const { port, url } = require("./config");
-const connectToDB = require("./src/db/connectToDB");
 const userControllers = require("./src/controllers/userControllers");
-const productControllers = require("./src/controllers/productControllers");
-const orderControllers = require("./src/controllers/orderControllers");
-
+const transactionControllers = require("./src/controllers/transactionControllers");
+const connectToDB = require("./src/db/connectToDB");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,21 +19,22 @@ app.put("/users/:id", userControllers.update);
 
 app.delete("/users/:id", userControllers.delete);
 
-app.get("/products", productControllers.getAll);
+app.get("/transactions", transactionControllers.getAll);
 
-app.get("/products/:id", productControllers.getOne);
+app.get("/transactions/:userId", transactionControllers.getAllByUserId);
 
-app.post("/products", productControllers.create);
+app.get(
+  "/transactions/incomes/:userId",
+  transactionControllers.getIncomesByUserId
+);
 
-app.put("/products/:id", productControllers.update);
+app.get("/transactions/costs/:userId", transactionControllers.getCostsByUserId);
 
-app.get("/orders", orderControllers.getAll);
+app.post("/transactions", transactionControllers.create);
 
-app.get("/orders/:id", orderControllers.getOne);
+app.delete("/transactions/:id", transactionControllers.delete);
 
-app.post("/orders", orderControllers.post);
-
-app.put("/orders/:id", orderControllers.update);
+app.put("/transactions/:id", transactionControllers.update);
 
 app.listen(port, () => {
   console.log("server is running!");
